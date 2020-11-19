@@ -1,0 +1,177 @@
+body{
+    margin:0;
+    padding:0;
+    text-align:left;
+    font-size: 32px;
+    background :url(../img/背景４.jpg);
+    background-size: 100%;
+    height: 130px;
+    font-family: fantasy;
+}
+
+.stage {
+  position: absolute;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+.stage--op {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stage--main {
+  display: none;
+}
+
+.stage--end {
+  display: none;
+  opacity: 0.3;
+  background: black;
+  color: white;
+  font-size: 36px;
+}
+
+#game-start:checked ~ .stage--op {
+  display: none;
+}
+
+#game-start:checked ~ .stage--main {
+  display: block;
+}
+
+#game-start:checked ~ .stage--end {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: game-end-animation 30s;
+}
+
+@keyframes game-end-animation {
+  0% { visibility: hidden; z-index: -1; }
+  99% { visibility: hidden; z-index: -1; }
+  100% { visibility: visible; z-index: 100; }
+}
+
+.mainbody{
+
+}
+
+
+h1.header{
+    font-family: serif;
+    color: white
+}
+
+header{
+    font-family: fantasy;
+    text-align: center;
+}
+
+
+.choice{
+    display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.gu{
+position: relative;
+}
+
+.heart{
+     width: 100%;
+     padding: 30px;
+
+}
+
+#gu_btn{
+    position: absolute;/*絶対配置*/
+  top: 50%;
+  left: 60%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+}
+
+.cho{
+position: relative;
+}
+
+#cho_btn{
+    position: absolute;/*絶対配置*/
+  top: 50%;
+  left: 65%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  width: 100px;
+}
+
+.par{
+position: relative;
+}
+
+#par_btn{
+    position: absolute;/*絶対配置*/
+  top: 50%;
+  left: 65%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+}
+
+footer{
+    text-align: center;
+}
+p{
+    font-size:200%;
+    text-align: center;
+    height:200px;
+}
+ul{
+    padding: 0;
+    color: palevioletred;
+    display:table;  /* 定義 */
+    table-layout: fixed;
+    width:100%;
+    height: 150px;
+}
+li{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    list-style-type:none;
+    display:table-cell;  /* 定義 */
+    cursor: pointer;
+}
+li:hover{
+    color:rgb(129, 102, 226);
+}
+
+#con_hand{
+    font-family: serif;
+    color: white;
+    font-size: 70px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#judgment{
+    font-family: serif;
+    color: white;
+    font-size: 70px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
