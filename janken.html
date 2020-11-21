@@ -10,8 +10,6 @@
 
 <body>
 
-
-
   <header>
     <h1 class="header">JANKEN</h1>
   </header>
@@ -26,11 +24,11 @@
 
         <div class="cho">
           <li id="cho_btn">チョキ</li>
-          <li><img class="heart" src="../js01_sample/img/btnback.png" alt=""></li>
+          <li><img class="heart" src="./img/btnback.png" alt=""></li>
         </div>
         <div class="par">
           <li id="par_btn">パー</li>
-          <li><img class="heart" src="../js01_sample/img/btnback.png" alt=""></li>
+          <li><img class="heart" src="./img/btnback.png" alt=""></li>
         </div>
 
       </ul>
@@ -38,22 +36,43 @@
       <div id="judgment">Judge</div>
     </main>
 
+    <div class="SCORE">
+      <p id="h2">SCORE :
+      </p>
+    </div>
+    <div class="tokuten">
+      <p class="h3">勝ち＝1点です</p>
+    </div>
+
+    <div class="savebtn">
+      <button id="save">SAVE</button>
+    </div>
+
     <footer></footer>
 
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
+
+    const firstscore = 0;
+    const scoreadd = 1;
+
     $(function () {
       const result = ["グー", "チョキ", "パー"]
 
+
       $("#gu_btn").on("click", function () {
         let rand = Math.floor(Math.random() * 3);
-        $("#con_hand").text("Compter is..." + result[rand]);
+        $("#con_hand").text("Computer is..." + result[rand]);
         if (rand == 0) {
           $("#judgment").text("あいこ");
         } else if (rand == 1) {
           $("#judgment").text("勝ち");
+          const SCORE = firstscore + 1;
+          console.log("SCORE");
+          $("#h2").html(SCORE);
+
         } else {
           $("#judgment").text("負け");
         }
@@ -61,27 +80,60 @@
 
       $("#cho_btn").on("click", function () {
         let rand = Math.floor(Math.random() * 3);
-        $("#con_hand").text("Compter is..." + result[rand]);
+        $("#con_hand").text("Computer is..." + result[rand]);
         if (rand == 0) {
           $("#judgment").text("負け");
         } else if (rand == 1) {
           $("#judgment").text("あいこ");
         } else {
           $("#judgment").text("勝ち");
+          const SCORE = firstscore + 1;
+          console.log("SCORE");
+          $("#h2").html(SCORE);
         }
       });
 
       $("#par_btn").on("click", function () {
         let rand = Math.floor(Math.random() * 3);
-        $("#con_hand").text("Compter is..." + result[rand]);
+        $("#con_hand").text("Computer is..." + result[rand]);
         if (rand == 0) {
           $("#judgment").text("勝ち");
+          const SCORE = firstscore + 1;
+          console.log("SCORE");
+          $("#h2").html(SCORE);
         } else if (rand == 1) {
           $("#judgment").text("負け");
         } else {
           $("#judgment").text("あいこ");
         }
       });
+
+      //1.Save クリックイベント
+
+      $('#save').on('click', function () {
+        var SCORE = $('#SCORE').val();
+      });
+
+      var json = JSON.stringify(SCORE);
+      localStorage.setItem('janken', json);
+    });
+
+
+    //2.clear クリックイベント
+
+    $('#clear').on('click', function () {
+      localStorage.removeItem('index');
+      $('#input').val("");
+      $("#text_area").val("")
+    });
+
+    //3.ページ読み込み：保存データ取得表示
+
+    if (localStorage.getItem('janken')) {
+      var json_get = localStorage.getItem('janken')
+      var obj_get = JSON.parse(json_get);
+      $('#SCORE').val("");
+    }
 
     });
 
